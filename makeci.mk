@@ -16,9 +16,10 @@ gitinit: .git/modules
 gitdeinit:
 	git submodule deinit --force .
 
-.PHONY: %.pkg
+.PHONY: %.pkg aptdcon
 %.pkg:
-	dpkg-query -l $(basename $@) | grep ^.i >/dev/null || sudo apt-get install $(basename $@)
+	dpkg-query -l $(basename $@) | grep ^.i >/dev/null \
+		|| (sudo python $(dir $(lastword $(MAKEFILE_LIST)))/apt-wait.py && sudo apt-get install -y $(basename $@))
 
 .PHONY: %.pip
 %.pip:
