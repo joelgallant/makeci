@@ -5,7 +5,7 @@ Simple tools for using GNU / POSIX make for continuous integration
 Here's a simple example to act as documentation. A simple cpp project that uses
 opencv, has tests and uses `cppcheck` as a linter.
 
-```markdown
+```makefile
 # Include the required modules up top
 include makeci/ci.mk makeci/cmake.mk
 
