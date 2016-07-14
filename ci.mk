@@ -19,6 +19,11 @@ gitinit:
 	# Initializes all git submodules
 	git submodule update --recursive --init
 
+.PHONY: %.gitmodule
+%.gitmodule:
+	# Initilizes git submodule
+	git submodule update --init $(basename $@)
+
 .PHONY: gitdeinit
 gitdeinit:
 	# Deinitializes all git submodules
