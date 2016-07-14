@@ -31,7 +31,7 @@ gitdeinit:
 	npm list -g $(basename $@) >/dev/null || sudo npm install -g $(basename $@)
 
 # Defaults to .cache just to stay out of the way
-CACHE_DIR := "$(shell pwd)/.cache"
+CACHE_DIR := $(shell pwd)/.cache
 
 .PHONY: %.github
 %.github:
