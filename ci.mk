@@ -1,8 +1,10 @@
-.PHONY: ci-init ci-build ci-finish
+.PHONY: ci-pre ci-init ci-build ci-finish
+ci-pre:
 ci-init:
 ci-build:
 ci-finish:
 ci:
+	@$(MAKE) ci-pre
 	@$(MAKE) ci-init
 	@$(MAKE) ci-build
 	@$(MAKE) ci-finish
