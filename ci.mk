@@ -58,5 +58,5 @@ CACHE_DIR := $(shell pwd)/.cache
 .PHONY: %.git
 %.git:
 	# Clones a git repo to CACHE_DIR
-	if [ -d $(CACHE_DIR)/$(basename $(notdir $@)) ]; then git -C $(CACHE_DIR)/$(basename $(notdir $@)) pull; \
+	if [ -d $(CACHE_DIR)/$(basename $(notdir $@)) ]; then git -C $(CACHE_DIR)/$(basename $(notdir $@)) fetch; \
 	else git clone $@ $(CACHE_DIR)/$(basename $(notdir $@)); fi;
