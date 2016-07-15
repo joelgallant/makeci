@@ -1,6 +1,7 @@
 build/CMakeCache.txt:
 	# Sets up a cmake build without arguments
-	mkdir -p build && cd build && cmake ..
+	# Use CMAKE_ARGS
+	mkdir -p build && cd build && cmake $(CMAKE_ARGS) ..
 
 .PHONY: %.cmake
 %.cmake: build/CMakeCache.txt
