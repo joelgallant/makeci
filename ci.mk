@@ -49,6 +49,7 @@ gitdeinit:
 # Defaults to .cache just to stay out of the way
 # This is where git clones are stored
 CACHE_DIR := $(shell pwd)/.cache
+$(shell mkdir -p $(CACHE_DIR))
 
 .PHONY: %.github
 %.github:
