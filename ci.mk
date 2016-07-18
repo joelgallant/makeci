@@ -34,17 +34,17 @@ gitdeinit:
 %.pkg:
 	# Installs an apt-get package if it's not already there
 	dpkg-query -l $(basename $@) 2>/dev/null | grep ^.i >/dev/null \
-		|| sudo apt-get install -y $(basename $@)
+		|| sudo apt-get install -q -y $(basename $@)
 
 .PHONY: %.pip
 %.pip:
 	# Installs a pip python package if it's not already there
-	python -c "import $(basename $@)" || sudo pip install $(basename $@)
+	python -c "import $(basename $@)" || sudo pip install -q $(basename $@)
 
 .PHONY: %.npm
 %.npm:
 	# Installs an npm package if it's not already there
-	npm list -g $(basename $@) >/dev/null || sudo npm install -g $(basename $@)
+	npm list -g $(basename $@) >/dev/null || sudo npm install --silent -g $(basename $@)
 
 # Defaults to .cache just to stay out of the way
 # This is where git clones are stored
