@@ -10,6 +10,11 @@ build/CMakeCache.txt:
 		cd build && cmake -D$(basename $@)=$(SETTING_VAL) ..; \
 	fi
 
+.PHONY: %.type
+%.type:
+	# Sets a variable to cmake's ON
+	@$(MAKE) SETTING_VAL=$(basename $@) CMAKE_BUILD_TYPE.cmake
+
 .PHONY: %.on
 %.on:
 	# Sets a variable to cmake's ON
