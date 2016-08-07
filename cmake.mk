@@ -12,7 +12,7 @@ build/CMakeCache.txt:
 
 .PHONY: %.type
 %.type:
-	# Sets a variable to cmake's ON
+	# Sets a the build type
 	@$(MAKE) SETTING_VAL=$(basename $@) CMAKE_BUILD_TYPE.cmake
 
 .PHONY: %.on
