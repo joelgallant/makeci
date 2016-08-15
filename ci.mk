@@ -17,7 +17,7 @@ ci:
 .PHONY: gitinit
 gitinit:
 	# Initializes all git submodules
-	git submodule update -q --recursive --init
+	git submodule update --recursive --init
 
 .PHONY: %.gitmodule
 %.gitmodule:
@@ -35,7 +35,7 @@ gitdeinit:
 	# Installs an apt-get package if it's not already there
 	dpkg-query -l $(basename $@) 2>/dev/null | grep ^.i >/dev/null \
 		|| (echo "Installing $(basename $@)..." && \
-			sudo apt-get -qq install -y $(basename $@) && \
+			sudo apt-get install -y $(basename $@) && \
 			echo "$(basename $@) is installed")
 
 .PHONY: %.pip
@@ -43,7 +43,7 @@ gitdeinit:
 	# Installs a pip python package if it's not already there
 	python -c "import $(basename $@)" 2>/dev/null \
 		|| (echo "Installing $(basename $@) on pip..." && \
-			sudo pip -q install $(basename $@) && \
+			sudo pip install $(basename $@) && \
 			echo "$(basename $@) is installed")
 
 .PHONY: %.npm
@@ -51,7 +51,7 @@ gitdeinit:
 	# Installs an npm package if it's not already there
 	npm list -g $(basename $@) >/dev/null \
 		|| (echo "Installing $(basename $@) on npm..." && \
-			sudo npm install --no-progress -g $(basename $@) && \
+			sudo npm install -g $(basename $@) && \
 			echo "$(basename $@) is installed")
 
 # Defaults to .cache just to stay out of the way
@@ -71,6 +71,6 @@ $(shell mkdir -p $(CACHE_DIR))
 		git -C $(CACHE_DIR)/$(basename $(notdir $@)) fetch; \
 	else \
 		echo "Cloning $@ to $(CACHE_DIR)/$(basename $(notdir $@))" && \
-		git clone -q $@ $(CACHE_DIR)/$(basename $(notdir $@)) && \
+		git clone $@ $(CACHE_DIR)/$(basename $(notdir $@)) && \
 		echo "Clone ($@) complete"; \
 	fi;
