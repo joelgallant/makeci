@@ -43,7 +43,7 @@ gitdeinit:
 	# Installs a pip python package if it's not already there
 	python -c "import $(basename $@)" 2>/dev/null \
 		|| (echo "Installing $(basename $@) on pip..." && \
-			sudo pip install $(basename $@) && \
+			sudo pip -q install $(basename $@) && \
 			echo "$(basename $@) is installed")
 
 .PHONY: %.npm
