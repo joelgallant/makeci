@@ -41,7 +41,7 @@ gitdeinit:
 .PHONY: %.pip
 %.pip:
 	# Installs a pip python package if it's not already there
-	python -c "import $(basename $@)" 2>/dev/null \
+	python -c "import $(basename $@)" 2>/dev/null || which $(basename $@) >/dev/null \
 		|| (echo "Installing $(basename $@) on pip..." && \
 			sudo pip -q install $(basename $@) && \
 			echo "$(basename $@) is installed")
